@@ -8,7 +8,7 @@
 
 int pedidos[NUM_PEDIDOS]; // Armazena os pedidos
 int pedidos_status[NUM_PEDIDOS]; // Armazena os status dos pedidos (0 - não finalizado, 1 - finalizado)
-int pedidos_disponiveis = 0; // Indica quantos pedidos estão disponíveis para serem prcoessados
+int pedidos_disponiveis = 0; // Indica quantos pedidos estão disponíveis para serem processados
 int proximo_pedido_a_ser_processado = 0; // Indica o próximo pedido a ser processado
 int proximo_pedido_a_ser_feito = 0; // Indica o próximo pedido a ser feito
 
