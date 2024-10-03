@@ -31,8 +31,8 @@ void* cliente(void* arg){
     printf("O cliente %ld fez o pedido %d\n", cliente_id, pedidos[indice]);
 
     // Atualiza o contador de pedidos disponíveis e o índice do próximo pedido, assim...
-    pedidos_disponiveis = (pedidos_disponiveis + 1) % NUM_PEDIDOS; // ... indica que tem mais um pedido disponível para ser processado
-    proximo_pedido_a_ser_feito = (proximo_pedido_a_ser_feito + 1) % NUM_PEDIDOS; // ... indica qual o próximo pedido a ser feito
+    pedidos_disponiveis++; // ... indica que tem mais um pedido disponível para ser processado
+    proximo_pedido_a_ser_feito++; // ... indica qual o próximo pedido a ser feito
     
     pthread_mutex_unlock(&mutex); // Destrava o mutex para que outros clientes/cozinheiros possam acessar o buffer
     
@@ -64,8 +64,8 @@ void* cozinheiro(void* arg){
             
             pedidos_status[pedido_id] = 1; // Marca o pedido como "finalizado"
 
-            proximo_pedido_a_ser_processado = (proximo_pedido_a_ser_processado + 1) % NUM_PEDIDOS; // Atualiza o índice do próximo pedido a ser processado
-            pedidos_disponiveis = (pedidos_disponiveis - 1) % NUM_PEDIDOS; // Decrementa o número de pedidos disponíveis
+            proximo_pedido_a_ser_processado++; // Atualiza o índice do próximo pedido a ser processado
+            pedidos_disponiveis--; // Decrementa o número de pedidos disponíveis
         }
         
         pthread_mutex_unlock(&mutex); //Libera o mutex para que outros cozinheiros/clientes possam acessar o buffer
