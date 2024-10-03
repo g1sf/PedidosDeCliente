@@ -62,7 +62,7 @@ void* cozinheiro(void* arg){
 
             printf("O cozinheiro %ld terminou o pedido %d\n", cozinheiro_id, pedido_id);
             
-            pedidos_status[pedido_id] = 1; // Marca o pedido como "finalizado"
+            pedidos_status[proximo_pedido_a_ser_processado % NUM_PEDIDOS] = 1; // Marca o pedido como "finalizado"
 
             proximo_pedido_a_ser_processado++; // Atualiza o índice do próximo pedido a ser processado
             pedidos_disponiveis--; // Decrementa o número de pedidos disponíveis
